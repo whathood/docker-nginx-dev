@@ -1,10 +1,13 @@
-FROM quay.io/whathood/docker-nginx:1.0
+FROM quay.io/whathood/docker-nginx:latest
 
 RUN apt-get update
 
 # OPCACHE
 ADD build/opcache-dev.ini   /etc/php5/fpm/mods-available/opcache-dev.ini
 RUN ln -s /etc/php5/fpm/mods-available/opcache-dev.ini /etc/php5/fpm/conf.d/06-opcache-dev.ini
+
+# memcached
+RUN apt-get install -y php5-memcached memcached
 
 # install xdebug and webgrind
 RUN apt-get install -y unzip php5-dev php-pear php5-json
