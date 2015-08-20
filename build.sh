@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sudo docker build -t quay.io/whathood/docker-nginx-dev:1.0 .
+sudo docker rmi quay.io/whathood/nginx-dev || true
+sudo docker build -t quay.io/whathood/nginx-dev .
